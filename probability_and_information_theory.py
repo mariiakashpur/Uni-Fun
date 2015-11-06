@@ -1,4 +1,4 @@
-import collections, math, numpy
+import collections, math
 
 def expectation(numlist):
     '''returns expectation value of all elements in numlist
@@ -73,11 +73,3 @@ def wordsEntropy(wordDict):
 # print wordsEntropy(wordDict("10000-sentences.txt"))
 
 
-#-------- TASK 5 ----------
-
-mu, sigma = -7.5, 1 # mean and standard deviation
-s = np.random.normal(mu, sigma)
-import matplotlib.pyplot as plt
-count, bins, ignored = plt.hist(s, 30, normed=True)
-plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) * np.exp( - (bins - mu)**2 / (2 * sigma**2) ), linewidth=2, color='r')
-plt.show()

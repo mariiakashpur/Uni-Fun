@@ -1,5 +1,3 @@
-
-
 class Sentence: 
 
   def __init__(self):
@@ -8,7 +6,8 @@ class Sentence:
   def addToken(self, token):
     self.tokens.append(token)
 
-
+  def getTokens(self):
+  	return self.tokens
 
 
 

@@ -11,6 +11,7 @@ class Corpus():
 		self.goldPath = goldPath
 		self.predictedPath = predictedPath
 		self.sents = []
+		self.sent_stats = {}
 		with open(goldPath) as gf, open(predictedPath) as pf:
 			sent = Sentence()
 			for gline,pline in izip(gf, pf): # open two files simultaneously
@@ -26,6 +27,21 @@ class Corpus():
 					self.sents.append(sent)
 					sent = Sentence()
 
+	def getSents(self):
+		return self.sents
+
+	def getSentStats(self):
+		for sent in self.sents:
+			token_stats = sent.getTokenStats()
+			for tag in token_stats:
+				if tag in self.sent_stats:
+					#print token
+					self.sent_stats [tag]["TP"] += token_stats[tag]["TP"]
+					self.sent_stats [tag]["FN"] += token_stats[tag]["FN"]
+					self.sent_stats [tag]["FP"] += token_stats[tag]["FP"]
+				else:
+					self.sent_stats [tag] = token_stats[tag]
+		return self.sent_stats
 
     	
 
